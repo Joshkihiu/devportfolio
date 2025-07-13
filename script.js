@@ -49,7 +49,7 @@ clear       - Clear the terminal
       break;
 
     case "about":
-      print(`I'm Joshua Muhoro, a Computer Science major at Kirinyaga University and a cybersecurity enthusiast. I specialize in secure, scalable applications and love combining software dev with ethical hacking and UI/UX design.`);
+      print(`I'm Joshua Muhoro, a Computer Science major at Kirinyaga University and a cybersecurity enthusiast. I specialize in secure, scalable applications and I love combining software dev with ethical hacking and UI/UX design.`);
       break;
 
     case "skills":

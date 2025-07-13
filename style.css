@@ -1,0 +1,108 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+  background: black;
+  color: #00ff00;
+  overflow: hidden;
+  height: 100vh;
+}
+
+canvas#matrix-canvas {
+  position: fixed;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.profile {
+  flex: 1;
+  max-width: 35%;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  color: #00ffcc;
+  overflow-y: auto;
+}
+
+.profile img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 2px solid #00ffcc;
+}
+
+.profile h2 {
+  margin: 10px 0;
+  font-size: 20px;
+}
+
+.profile p {
+  margin: 8px 0;
+  line-height: 1.4em;
+}
+
+.profile .stats {
+  margin-top: 15px;
+  border-top: 1px solid #00ffcc;
+  padding-top: 10px;
+  font-size: 14px;
+}
+
+.profile .links a {
+  color: #00ffee;
+  text-decoration: none;
+}
+
+.terminal {
+  flex: 2;
+  margin-left: 20px;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.input-line {
+  display: flex;
+  align-items: center;
+}
+
+.prompt {
+  margin-right: 5px;
+}
+
+#input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #00ff00;
+  font-family: monospace;
+  font-size: 16px;
+  width: 100%;
+}
+
+#output {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+#output div {
+  margin: 4px 0;
+}
+

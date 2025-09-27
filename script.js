@@ -75,7 +75,20 @@ React Portfolio Website - Smooth animations (React + Tailwind)
 API Security Framework - Secure API with JWT (Node.js)
       `);
       break;
+    case "ls":
+      print(`
+about       - Who I am
+skills      - My top skills
+projects    - Featured work
+experience  - Education & certs
+blog        - Latest blog posts
+contact     - How to reach me
+cv          - Download my resume (coming soon)
+clear       - Clear the terminal
+      `);
+      break;
 
+      
     case "experience":
       print(`
 🎓 Kirinyaga University — Computer Science (2022–Now)

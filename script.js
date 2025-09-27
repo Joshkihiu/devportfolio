@@ -74,7 +74,8 @@ Flutter Development Kit - Flutter + GitHub Actions
 React Portfolio Website - Smooth animations (React + Tailwind)
 API Security Framework - Secure API with JWT (Node.js)
       `);
-      break;
+      break; 
+      
     case "ls":
       print(`
 about       - Who I am

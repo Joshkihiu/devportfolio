@@ -2,12 +2,7 @@ const canvas = document.getElementById('matrix-canvas');
 const ctx = canvas.getContext('2d');
 
 function setCanvasSize() {
-  // For mobile, set canvas to cover scroll height
-  if (window.innerWidth < 768) {
-    canvas.height = Math.max(document.body.scrollHeight, window.innerHeight);
-  } else {
-    canvas.height = window.innerHeight;
-  }
+  canvas.height = window.innerHeight;
   canvas.width = window.innerWidth;
 }
 
@@ -17,14 +12,30 @@ setCanvasSize();
 let resizeTimeout;
 window.addEventListener('resize', function() {
   clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(setCanvasSize, 250);
+  resizeTimeout = setTimeout(function() {
+    setCanvasSize();
+    // Recalculate columns after resize
+    const newColumns = Math.floor(canvas.width / fontSize);
+    if (newColumns !== drops.length) {
+      drops.length = newColumns;
+      for (let i = 0; i < drops.length; i++) {
+        if (drops[i] === undefined) {
+          drops[i] = Math.floor(Math.random() * canvas.height / fontSize);
+        }
+      }
+    }
+  }, 250);
 });
 
 const letters = 'アカサタナハマヤラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const isMobile = window.innerWidth < 768;
-const fontSize = isMobile ? 14 : 16;
-const columns = canvas.width / fontSize;
-const drops = Array(Math.floor(columns)).fill(1);
+const fontSize = 16;
+const columns = Math.floor(canvas.width / fontSize);
+const drops = [];
+
+// Initialize drops
+for (let i = 0; i < columns; i++) {
+  drops[i] = Math.floor(Math.random() * canvas.height / fontSize);
+}
 
 function draw() {
   ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
@@ -45,5 +56,4 @@ function draw() {
   }
 }
 
-const frameRate = isMobile ? 40 : 33;
-setInterval(draw, frameRate);
+setInterval(draw, 33);

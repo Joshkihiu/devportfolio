@@ -25,7 +25,9 @@ canvas#matrix-canvas {
   box-sizing: border-box;
 }
 
+/* On DESKTOP: Profile on LEFT, Terminal on RIGHT */
 .profile {
+  order: 1;
   flex: 1;
   max-width: 35%;
   background: rgba(0, 0, 0, 0.85);
@@ -68,6 +70,7 @@ canvas#matrix-canvas {
 }
 
 .terminal {
+  order: 2;
   flex: 2;
   margin-left: 20px;
   background: rgba(0, 0, 0, 0.85);
@@ -122,7 +125,7 @@ canvas#matrix-canvas {
     padding: 10px;
   }
 
-  /* Terminal appears FIRST on mobile */
+  /* On MOBILE: Terminal stays FIRST (natural order) */
   .terminal {
     order: 1;
     margin-left: 0;
@@ -132,7 +135,7 @@ canvas#matrix-canvas {
     background: rgba(0, 0, 0, 0.92);
   }
 
-  /* Profile appears SECOND on mobile */
+  /* On MOBILE: Profile comes SECOND */
   .profile {
     order: 2;
     max-width: 100%;

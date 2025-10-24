@@ -122,10 +122,21 @@ canvas#matrix-canvas {
     padding: 10px;
   }
 
+  /* Terminal appears FIRST on mobile */
+  .terminal {
+    order: 1;
+    margin-left: 0;
+    margin-bottom: 15px;
+    min-height: 60vh;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.92);
+  }
+
+  /* Profile appears SECOND on mobile */
   .profile {
+    order: 2;
     max-width: 100%;
     padding: 15px 10px;
-    margin-bottom: 15px;
     background: rgba(0, 0, 0, 0.92);
   }
 
@@ -162,13 +173,6 @@ canvas#matrix-canvas {
   .profile .stats p:nth-child(3),
   .profile .stats p:nth-child(4) {
     display: none;
-  }
-
-  .terminal {
-    margin-left: 0;
-    min-height: 65vh;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.92);
   }
 
   #input {
@@ -208,6 +212,11 @@ canvas#matrix-canvas {
     padding: 8px;
   }
 
+  .terminal {
+    min-height: 65vh;
+    padding: 12px;
+  }
+
   .profile {
     padding: 12px 8px;
   }
@@ -229,11 +238,6 @@ canvas#matrix-canvas {
     font-size: 11px;
   }
 
-  .terminal {
-    min-height: 70vh;
-    padding: 12px;
-  }
-
   #input {
     font-size: 12px;
   }
@@ -248,6 +252,10 @@ canvas#matrix-canvas {
 }
 
 @media screen and (max-width: 360px) {
+  .terminal {
+    min-height: 70vh;
+  }
+
   .profile img {
     width: 90px;
     height: 90px;
@@ -263,9 +271,5 @@ canvas#matrix-canvas {
 
   .profile .stats {
     font-size: 10px;
-  }
-
-  .terminal {
-    min-height: 75vh;
   }
 }

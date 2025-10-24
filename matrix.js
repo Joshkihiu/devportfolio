@@ -1,11 +1,16 @@
 const canvas = document.getElementById('matrix-canvas');
 const ctx = canvas.getContext('2d');
 
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
+function resizeCanvas() {
+  canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
+}
+
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
 
 const letters = 'アカサタナハマヤラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const fontSize = 16;
+const fontSize = window.innerWidth < 768 ? 12 : 16; // Smaller font on mobile
 const columns = canvas.width / fontSize;
 const drops = Array(Math.floor(columns)).fill(1);
 

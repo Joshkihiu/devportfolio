@@ -1,22 +1,23 @@
 const canvas = document.getElementById('matrix-canvas');
 const ctx = canvas.getContext('2d');
 
-function resizeCanvas() {
-  canvas.height = document.documentElement.scrollHeight;
+function setCanvasSize() {
+  // For mobile, set canvas to cover scroll height
+  if (window.innerWidth < 768) {
+    canvas.height = Math.max(document.body.scrollHeight, window.innerHeight);
+  } else {
+    canvas.height = window.innerHeight;
+  }
   canvas.width = window.innerWidth;
 }
 
-resizeCanvas();
+setCanvasSize();
 
-// Handle window resize and scroll
+// Handle resize
 let resizeTimeout;
 window.addEventListener('resize', function() {
   clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(resizeCanvas, 250);
-});
-
-window.addEventListener('scroll', function() {
-  canvas.style.top = window.pageYOffset + 'px';
+  resizeTimeout = setTimeout(setCanvasSize, 250);
 });
 
 const letters = 'アカサタナハマヤラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -44,7 +45,5 @@ function draw() {
   }
 }
 
-// Adjust frame rate based on device
 const frameRate = isMobile ? 40 : 33;
 setInterval(draw, frameRate);
-

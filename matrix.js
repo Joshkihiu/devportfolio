@@ -7,10 +7,17 @@ function resizeCanvas() {
 }
 
 resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
+
+// Handle window resize
+let resizeTimeout;
+window.addEventListener('resize', function() {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(resizeCanvas, 250);
+});
 
 const letters = 'アカサタナハマヤラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const fontSize = window.innerWidth < 768 ? 12 : 16; // Smaller font on mobile
+const isMobile = window.innerWidth < 768;
+const fontSize = isMobile ? 14 : 16;
 const columns = canvas.width / fontSize;
 const drops = Array(Math.floor(columns)).fill(1);
 
@@ -33,4 +40,6 @@ function draw() {
   }
 }
 
-setInterval(draw, 33);
+// Adjust frame rate based on device
+const frameRate = isMobile ? 40 : 33;
+setInterval(draw, frameRate);

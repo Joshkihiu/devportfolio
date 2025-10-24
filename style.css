@@ -13,6 +13,8 @@ canvas#matrix-canvas {
   z-index: 0;
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
 }
 
 .container {
@@ -28,13 +30,14 @@ canvas#matrix-canvas {
 .profile {
   flex: 1;
   max-width: 35%;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.90);
   padding: 20px;
   border-radius: 8px;
   text-align: center;
   color: #00ffcc;
   overflow-y: auto;
   max-height: calc(100vh - 40px);
+  backdrop-filter: blur(2px);
 }
 
 .profile img {
@@ -79,19 +82,24 @@ canvas#matrix-canvas {
 .terminal {
   flex: 2;
   margin-left: 20px;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.90);
   padding: 20px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   max-height: calc(100vh - 40px);
+  backdrop-filter: blur(2px);
 }
 
 .input-line {
   display: flex;
   align-items: center;
   margin-top: 10px;
+  position: sticky;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 5px 0;
 }
 
 .prompt {
@@ -122,6 +130,11 @@ canvas#matrix-canvas {
   white-space: pre-wrap;
 }
 
+/* Hide verbose content on mobile */
+.mobile-hide {
+  display: block;
+}
+
 /* ============ MOBILE RESPONSIVE ============ */
 
 /* Tablets and small laptops */
@@ -147,64 +160,81 @@ canvas#matrix-canvas {
     flex-direction: column;
     padding: 10px;
     min-height: auto;
+    gap: 10px;
   }
 
   .profile {
     max-width: 100%;
     width: 100%;
     max-height: none;
-    margin-bottom: 15px;
-    padding: 15px;
+    margin-bottom: 0;
+    padding: 15px 10px;
     order: 1;
+    background: rgba(0, 0, 0, 0.95);
   }
 
   .profile img {
-    width: 180px;
-    height: 180px;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 8px;
   }
 
   .profile h2 {
-    font-size: 18px;
+    font-size: 16px;
+    margin: 8px 0;
   }
 
   .profile p {
-    font-size: 14px;
-    margin: 6px 0;
+    font-size: 13px;
+    margin: 4px 0;
+  }
+
+  /* Hide verbose descriptions on mobile */
+  .mobile-hide {
+    display: none;
   }
 
   .profile .stats {
-    font-size: 13px;
-    padding-top: 8px;
+    font-size: 12px;
+    padding-top: 6px;
+    margin-top: 10px;
   }
 
   .profile .stats p {
-    margin: 5px 0;
+    margin: 4px 0;
   }
 
   .terminal {
     margin-left: 0;
     width: 100%;
     max-height: none;
-    min-height: 50vh;
-    padding: 15px;
+    min-height: 60vh;
+    padding: 12px;
     order: 2;
+    background: rgba(0, 0, 0, 0.95);
+    margin-top: -5px;
   }
 
   #input {
-    font-size: 14px;
-  }
-
-  #output {
     font-size: 13px;
   }
 
-  .prompt {
-    font-size: 14px;
+  #output {
+    font-size: 12px;
   }
 
-  /* Slightly reduce matrix intensity on mobile */
+  .prompt {
+    font-size: 13px;
+  }
+
+  .input-line {
+    padding: 8px 0;
+    background: rgba(0, 0, 0, 0.98);
+  }
+
+  /* Make matrix more visible on mobile */
   canvas#matrix-canvas {
-    opacity: 0.5;
+    opacity: 0.7;
   }
 }
 
@@ -212,52 +242,16 @@ canvas#matrix-canvas {
 @media screen and (max-width: 480px) {
   .container {
     padding: 8px;
+    gap: 8px;
   }
 
   .profile {
-    padding: 12px;
+    padding: 12px 8px;
   }
 
   .profile img {
-    width: 140px;
-    height: 140px;
-  }
-
-  .profile h2 {
-    font-size: 16px;
-  }
-
-  .profile p {
-    font-size: 13px;
-  }
-
-  .profile .stats {
-    font-size: 12px;
-  }
-
-  .terminal {
-    padding: 12px;
-    min-height: 40vh;
-  }
-
-  #input {
-    font-size: 13px;
-  }
-
-  #output {
-    font-size: 12px;
-  }
-
-  .prompt {
-    font-size: 13px;
-  }
-}
-
-/* Extra small phones */
-@media screen and (max-width: 360px) {
-  .profile img {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
   }
 
   .profile h2 {
@@ -272,7 +266,48 @@ canvas#matrix-canvas {
     font-size: 11px;
   }
 
-  #input, #output, .prompt {
+  .terminal {
+    padding: 10px;
+    min-height: 65vh;
+  }
+
+  #input {
     font-size: 12px;
+  }
+
+  #output {
+    font-size: 11px;
+  }
+
+  .prompt {
+    font-size: 12px;
+  }
+}
+
+/* Extra small phones */
+@media screen and (max-width: 360px) {
+  .profile img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .profile h2 {
+    font-size: 14px;
+  }
+
+  .profile p {
+    font-size: 11px;
+  }
+
+  .profile .stats {
+    font-size: 10px;
+  }
+
+  .terminal {
+    min-height: 70vh;
+  }
+
+  #input, #output, .prompt {
+    font-size: 11px;
   }
 }

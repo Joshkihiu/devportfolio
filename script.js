@@ -52,37 +52,59 @@ function handleCommand(cmd) {
 
   switch (baseCmd) {
     case "help":
-    case "ls":
-      print(`
-Available commands:
-<span style="color:#00ffcc">Portfolio Commands:</span>
-  about       - Who I am
-  skills      - All my technical skills
-  skills-frontend  - Frontend skills
-  skills-backend   - Backend skills
-  skills-database  - Database & cloud skills
-  skills-security  - Cybersecurity skills
-  projects    - Featured work
-  experience  - Education & certs
-  blog        - Latest blog posts
-  contact     - How to reach me
-  cv          - Download my resume
+case "ls":
+  print(`
+<span style="color:#00ffcc">═══════════════════════════════════════════════════════════</span>
+                    AVAILABLE COMMANDS
+<span style="color:#00ffcc">═══════════════════════════════════════════════════════════</span>
 
-<span style="color:#00ffcc">Linux Commands:</span>
-  whoami      - Display current user
-  date        - Show current date/time
-  pwd         - Print working directory
-  cd          - Change directory
-  cat         - Display file contents
-  echo        - Print text
-  uname       - System information
-  neofetch    - System info display
-  tree        - Directory tree
-  history     - Command history
-  clear       - Clear terminal
-  exit        - Close terminal
-      `);
-      break;
+<span style="color:#00ffcc">📁 Portfolio Commands:</span>
+  about              - Learn about me and my background
+  skills             - View all technical skills
+  skills-frontend    - Frontend development skills
+  skills-backend     - Backend development skills
+  skills-database    - Database & cloud skills
+  skills-security    - Cybersecurity skills
+  skills-all         - All skills with category links
+  projects           - View featured projects
+  experience         - Education & certifications
+  blog               - Latest blog posts
+  contact            - Contact information
+  cv / resume        - Download resume (coming soon)
+
+<span style="color:#00ffcc">💻 System Commands:</span>
+  whoami             - Display current user
+  date               - Show current date and time
+  pwd                - Print working directory
+  cd [dir]           - Change directory (try: projects, skills, ~, ..)
+  uname [-a]         - System information
+  neofetch           - Display system info with ASCII art
+
+<span style="color:#00ffcc">📄 File Commands:</span>
+  cat [file]         - Display file contents
+                       (try: about.txt, skills.txt, contact.txt)
+  echo [text]        - Print text to terminal
+  tree               - Display directory tree structure
+
+<span style="color:#00ffcc">🔧 Utility Commands:</span>
+  history            - Show command history
+  clear / cls        - Clear the terminal screen
+  help / ls          - Show this help message
+  exit / quit        - Exit terminal (with a surprise!)
+
+<span style="color:#00ffcc">🔐 Fun Commands:</span>
+  sudo [cmd]         - Try to run commands as superuser
+  
+<span style="color:#00ffcc">💡 Tips:</span>
+  • Use <span style="color:#0ff">Tab</span> for command auto-completion
+  • Use <span style="color:#0ff">↑/↓</span> arrow keys to navigate command history
+  • Type a command name to see what it does!
+
+<span style="color:#00ffcc">═══════════════════════════════════════════════════════════</span>
+Type any command to get started, or try 'about' to learn more!
+  `);
+  break;
+
 
     case "about":
       print(`I'm Joshua Muhoro, a Computer Science major at Kirinyaga University and a cybersecurity enthusiast. I specialize in secure, scalable applications and I love combining software dev with ethical hacking and UI/UX design.`);

@@ -4,8 +4,8 @@ body, html {
   font-family: monospace;
   background: black;
   color: #00ff00;
+  overflow: hidden;
   height: 100vh;
-  overflow-x: hidden;
 }
 
 canvas#matrix-canvas {
@@ -13,8 +13,6 @@ canvas#matrix-canvas {
   z-index: 0;
   width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
 }
 
 .container {
@@ -22,7 +20,7 @@ canvas#matrix-canvas {
   z-index: 1;
   display: flex;
   flex-direction: row;
-  min-height: 100vh;
+  height: 100vh;
   padding: 20px;
   box-sizing: border-box;
 }
@@ -30,14 +28,12 @@ canvas#matrix-canvas {
 .profile {
   flex: 1;
   max-width: 35%;
-  background: rgba(0, 0, 0, 0.90);
+  background: rgba(0, 0, 0, 0.85);
   padding: 20px;
   border-radius: 8px;
   text-align: center;
   color: #00ffcc;
   overflow-y: auto;
-  max-height: calc(100vh - 40px);
-  backdrop-filter: blur(2px);
 }
 
 .profile img {
@@ -66,46 +62,29 @@ canvas#matrix-canvas {
   font-size: 14px;
 }
 
-.profile .stats p {
-  margin: 6px 0;
-}
-
 .profile .links a {
   color: #00ffee;
   text-decoration: none;
 }
 
-.profile .links a:hover {
-  text-decoration: underline;
-}
-
 .terminal {
   flex: 2;
   margin-left: 20px;
-  background: rgba(0, 0, 0, 0.90);
+  background: rgba(0, 0, 0, 0.85);
   padding: 20px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  max-height: calc(100vh - 40px);
-  backdrop-filter: blur(2px);
 }
 
 .input-line {
   display: flex;
   align-items: center;
-  margin-top: 10px;
-  position: sticky;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.95);
-  padding: 5px 0;
 }
 
 .prompt {
   margin-right: 5px;
-  white-space: nowrap;
-  flex-shrink: 0;
 }
 
 #input {
@@ -121,56 +100,33 @@ canvas#matrix-canvas {
 #output {
   flex-grow: 1;
   overflow-y: auto;
-  margin-bottom: 10px;
 }
 
 #output div {
   margin: 4px 0;
-  word-wrap: break-word;
-  white-space: pre-wrap;
 }
 
-/* Hide verbose content on mobile */
-.mobile-hide {
-  display: block;
-}
+/* ============ MOBILE OPTIMIZATION ============ */
 
-/* ============ MOBILE RESPONSIVE ============ */
-
-/* Tablets and small laptops */
-@media screen and (max-width: 1024px) {
-  .profile {
-    max-width: 40%;
-  }
-
-  .profile img {
-    width: 200px;
-    height: 200px;
-  }
-}
-
-/* Mobile devices - Stack layout vertically */
 @media screen and (max-width: 768px) {
   body, html {
     overflow-y: auto;
+    overflow-x: hidden;
     height: auto;
   }
 
   .container {
     flex-direction: column;
+    height: auto;
+    min-height: 100vh;
     padding: 10px;
-    min-height: auto;
-    gap: 10px;
   }
 
   .profile {
     max-width: 100%;
-    width: 100%;
-    max-height: none;
-    margin-bottom: 0;
     padding: 15px 10px;
-    order: 1;
-    background: rgba(0, 0, 0, 0.95);
+    margin-bottom: 15px;
+    background: rgba(0, 0, 0, 0.92);
   }
 
   .profile img {
@@ -186,33 +142,33 @@ canvas#matrix-canvas {
 
   .profile p {
     font-size: 13px;
-    margin: 4px 0;
-  }
-
-  /* Hide verbose descriptions on mobile */
-  .mobile-hide {
-    display: none;
+    margin: 5px 0;
+    line-height: 1.3em;
   }
 
   .profile .stats {
-    font-size: 12px;
-    padding-top: 6px;
     margin-top: 10px;
+    padding-top: 8px;
+    font-size: 12px;
   }
 
   .profile .stats p {
     margin: 4px 0;
   }
 
+  /* Hide verbose stats on mobile */
+  .profile .stats p:nth-child(1),
+  .profile .stats p:nth-child(2),
+  .profile .stats p:nth-child(3),
+  .profile .stats p:nth-child(4) {
+    display: none;
+  }
+
   .terminal {
     margin-left: 0;
-    width: 100%;
-    max-height: none;
-    min-height: 60vh;
-    padding: 12px;
-    order: 2;
-    background: rgba(0, 0, 0, 0.95);
-    margin-top: -5px;
+    min-height: 65vh;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.92);
   }
 
   #input {
@@ -223,26 +179,33 @@ canvas#matrix-canvas {
     font-size: 12px;
   }
 
+  #output div {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+
   .prompt {
     font-size: 13px;
+    white-space: nowrap;
   }
 
   .input-line {
+    position: sticky;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
     padding: 8px 0;
-    background: rgba(0, 0, 0, 0.98);
+    margin-top: 10px;
   }
 
-  /* Make matrix more visible on mobile */
+  /* Make matrix more visible */
   canvas#matrix-canvas {
-    opacity: 0.7;
+    opacity: 0.8;
   }
 }
 
-/* Small phones */
 @media screen and (max-width: 480px) {
   .container {
     padding: 8px;
-    gap: 8px;
   }
 
   .profile {
@@ -267,8 +230,8 @@ canvas#matrix-canvas {
   }
 
   .terminal {
-    padding: 10px;
-    min-height: 65vh;
+    min-height: 70vh;
+    padding: 12px;
   }
 
   #input {
@@ -284,7 +247,6 @@ canvas#matrix-canvas {
   }
 }
 
-/* Extra small phones */
 @media screen and (max-width: 360px) {
   .profile img {
     width: 90px;
@@ -304,10 +266,6 @@ canvas#matrix-canvas {
   }
 
   .terminal {
-    min-height: 70vh;
-  }
-
-  #input, #output, .prompt {
-    font-size: 11px;
+    min-height: 75vh;
   }
 }

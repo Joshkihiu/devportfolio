@@ -13,6 +13,9 @@ canvas#matrix-canvas {
   z-index: 0;
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none; /* Allow clicks to pass through */
 }
 
 .container {
@@ -115,6 +118,12 @@ canvas#matrix-canvas {
     height: auto;
   }
 
+  canvas#matrix-canvas {
+    position: fixed;
+    height: 100%;
+    opacity: 0.8;
+  }
+
   .container {
     flex-direction: column;
     height: auto;
@@ -201,11 +210,6 @@ canvas#matrix-canvas {
     background: rgba(0, 0, 0, 0.95);
     padding: 8px 0;
     margin-top: 10px;
-  }
-
-  /* Make matrix more visible */
-  canvas#matrix-canvas {
-    opacity: 0.8;
   }
 }
 

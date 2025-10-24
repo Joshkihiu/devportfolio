@@ -279,3 +279,92 @@ canvas#matrix-canvas {
     min-height: 40vh;
   }
 }
+/* ============ CUSTOM SCROLLBAR STYLING ============ */
+
+/* For Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 255, 204, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00ff00, #00ffcc);
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.8);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #00ffcc, #00ff00);
+  box-shadow: 0 0 10px #00ff00;
+}
+
+::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #00ff00 rgba(0, 0, 0, 0.8);
+}
+
+/* Terminal specific scrollbar */
+.terminal::-webkit-scrollbar {
+  width: 10px;
+}
+
+.terminal::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 8px;
+}
+
+.terminal::-webkit-scrollbar-thumb {
+  background: #00ff00;
+  border-radius: 8px;
+  border: 2px solid rgba(0, 0, 0, 0.9);
+}
+
+.terminal::-webkit-scrollbar-thumb:hover {
+  background: #00ffcc;
+  box-shadow: 0 0 8px #00ff00;
+}
+
+/* Profile specific scrollbar */
+.profile::-webkit-scrollbar {
+  width: 10px;
+}
+
+.profile::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 8px;
+}
+
+.profile::-webkit-scrollbar-thumb {
+  background: #00ffcc;
+  border-radius: 8px;
+  border: 2px solid rgba(0, 0, 0, 0.9);
+}
+
+.profile::-webkit-scrollbar-thumb:hover {
+  background: #00ff00;
+  box-shadow: 0 0 8px #00ffcc;
+}
+
+/* Mobile scrollbar adjustments */
+@media screen and (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .terminal::-webkit-scrollbar,
+  .profile::-webkit-scrollbar {
+    width: 6px;
+  }
+}

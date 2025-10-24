@@ -2,17 +2,21 @@ const canvas = document.getElementById('matrix-canvas');
 const ctx = canvas.getContext('2d');
 
 function resizeCanvas() {
-  canvas.height = window.innerHeight;
+  canvas.height = document.documentElement.scrollHeight;
   canvas.width = window.innerWidth;
 }
 
 resizeCanvas();
 
-// Handle window resize
+// Handle window resize and scroll
 let resizeTimeout;
 window.addEventListener('resize', function() {
   clearTimeout(resizeTimeout);
   resizeTimeout = setTimeout(resizeCanvas, 250);
+});
+
+window.addEventListener('scroll', function() {
+  canvas.style.top = window.pageYOffset + 'px';
 });
 
 const letters = 'アカサタナハマヤラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -43,3 +47,4 @@ function draw() {
 // Adjust frame rate based on device
 const frameRate = isMobile ? 40 : 33;
 setInterval(draw, frameRate);
+

@@ -25,9 +25,7 @@ canvas#matrix-canvas {
   box-sizing: border-box;
 }
 
-/* On DESKTOP: Profile on LEFT, Terminal on RIGHT */
 .profile {
-  order: 1;
   flex: 1;
   max-width: 35%;
   background: rgba(0, 0, 0, 0.85);
@@ -70,7 +68,6 @@ canvas#matrix-canvas {
 }
 
 .terminal {
-  order: 2;
   flex: 2;
   margin-left: 20px;
   background: rgba(0, 0, 0, 0.85);
@@ -123,24 +120,15 @@ canvas#matrix-canvas {
     height: auto;
     min-height: 100vh;
     padding: 10px;
+    gap: 0;
   }
 
-  /* On MOBILE: Terminal stays FIRST (natural order) */
-  .terminal {
-    order: 1;
-    margin-left: 0;
-    margin-bottom: 15px;
-    min-height: 60vh;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.92);
-  }
-
-  /* On MOBILE: Profile comes SECOND */
   .profile {
-    order: 2;
     max-width: 100%;
     padding: 15px 10px;
+    margin-bottom: 0;
     background: rgba(0, 0, 0, 0.92);
+    border-radius: 8px 8px 0 0;
   }
 
   .profile img {
@@ -164,6 +152,8 @@ canvas#matrix-canvas {
     margin-top: 10px;
     padding-top: 8px;
     font-size: 12px;
+    border-bottom: 1px solid #00ffcc;
+    padding-bottom: 10px;
   }
 
   .profile .stats p {
@@ -176,6 +166,15 @@ canvas#matrix-canvas {
   .profile .stats p:nth-child(3),
   .profile .stats p:nth-child(4) {
     display: none;
+  }
+
+  .terminal {
+    margin-left: 0;
+    margin-top: 0;
+    min-height: 50vh;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.92);
+    border-radius: 0 0 8px 8px;
   }
 
   #input {
@@ -215,11 +214,6 @@ canvas#matrix-canvas {
     padding: 8px;
   }
 
-  .terminal {
-    min-height: 65vh;
-    padding: 12px;
-  }
-
   .profile {
     padding: 12px 8px;
   }
@@ -241,6 +235,11 @@ canvas#matrix-canvas {
     font-size: 11px;
   }
 
+  .terminal {
+    min-height: 45vh;
+    padding: 12px;
+  }
+
   #input {
     font-size: 12px;
   }
@@ -255,10 +254,6 @@ canvas#matrix-canvas {
 }
 
 @media screen and (max-width: 360px) {
-  .terminal {
-    min-height: 70vh;
-  }
-
   .profile img {
     width: 90px;
     height: 90px;
@@ -274,5 +269,9 @@ canvas#matrix-canvas {
 
   .profile .stats {
     font-size: 10px;
+  }
+
+  .terminal {
+    min-height: 40vh;
   }
 }
